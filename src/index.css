@@ -1,0 +1,137 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 98%;
+    --foreground: 214 79% 15%;
+    --card: 0 0% 100%;
+    --card-foreground: 214 79% 15%;
+    --primary: 214 79% 20%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 214 79% 40%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 161 77% 38%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 84.2% 56.1%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 214 79% 20%;
+    --radius: 0.75rem;
+  }
+
+  /* Applique les variables CSS aux classes Tailwind correspondantes */
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+
+  .card {
+    background-color: hsl(var(--card));
+    color: hsl(var(--card-foreground));
+  }
+
+  .primary {
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+  }
+
+  .secondary {
+    background-color: hsl(var(--secondary));
+    color: hsl(var(--secondary-foreground));
+  }
+
+  .muted {
+    background-color: hsl(var(--muted));
+    color: hsl(var(--muted-foreground));
+  }
+}
+
+@layer components {
+  /* Exemple avec @apply corrigé */
+  * {
+    @apply border-gray-300; /* Remplacer border-border par une classe existante */
+  }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-semibold;
+  }
+}
+
+@layer utilities {
+  /* Définition des classes personnalisées */
+  .bg-background {
+    background-color: hsl(var(--background));
+  }
+
+  .font-display {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+  }
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1px;
+}
+
+.time-slot {
+  @apply p-2 border rounded-lg cursor-pointer transition-colors;
+}
+
+.time-slot-available {
+  @apply bg-petaouchnock-green/10 hover:bg-petaouchnock-green/20 border-petaouchnock-green/30;
+}
+
+.time-slot-unavailable {
+  @apply bg-gray-100 border-gray-200 cursor-not-allowed;
+}
+
+.time-slot-selected {
+  @apply bg-petaouchnock-green text-white border-petaouchnock-green;
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  src: url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+}
+
+/* Animations et transitions */
+.hover-scale {
+  @apply transition-transform duration-200 hover:scale-105;
+}
+
+.card-shadow {
+  @apply shadow-md hover:shadow-lg transition-shadow duration-200;
+}
+
+/* Composants personnalisés */
+.btn-primary {
+  @apply bg-petaouchnock-blue-dark hover:bg-petaouchnock-blue text-white font-medium py-2 px-4 rounded-lg transition-colors;
+}
+
+.btn-secondary {
+  @apply bg-petaouchnock-green hover:bg-petaouchnock-green-dark text-white font-medium py-2 px-4 rounded-lg transition-colors;
+}
+
+.btn-outline {
+  @apply border border-petaouchnock-blue-dark text-petaouchnock-blue-dark hover:bg-petaouchnock-blue-dark hover:text-white font-medium py-2 px-4 rounded-lg transition-colors;
+}

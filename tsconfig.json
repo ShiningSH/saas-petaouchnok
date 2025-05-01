@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "noImplicitAny": false,
+    "noUnusedParameters": false,
+    "skipLibCheck": true,
+    "allowJs": true,
+    "noUnusedLocals": false,
+    "strictNullChecks": false,
+    "moduleResolution": "node",          // Ajoute cette ligne pour la résolution des modules
+    "esModuleInterop": true,             // Assure la compatibilité avec les modules ES
+    "allowSyntheticDefaultImports": true, // Permet l'importation des modules ES de façon synthétique
+    "module": "esnext",                  // Spécifie le module de type ECMAScript
+    "target": "es6",                     // Compilera en ES6 pour un meilleur support moderne
+    "jsx": "react-jsx",                  // Active le mode JSX pour React 17+
+    "resolveJsonModule": true            // Permet l'importation des fichiers JSON
+  },
+  "include": [
+    "src/**/*" // Assure-toi que les fichiers dans `src` sont bien inclus
+  ],
+  "exclude": [
+    "node_modules" // Exclut `node_modules`
+  ]
+}
