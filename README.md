@@ -62,8 +62,6 @@ Cette application web et mobile permet à la ville de Pétaouchnock de gérer la
 ### Prérequis
 
 - Node.js ≥ 18
-- Compte Supabase (https://supabase.com)
-- Compte Stripe (https://stripe.com)
 - Git
 
 ### Installation
