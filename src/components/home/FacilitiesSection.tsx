@@ -20,7 +20,7 @@ const mockFacilities: Facility[] = [
     name: "Gymnase Municipal",
     type: "gymnase",
     description: "Espace polyvalent pour basketball, volleyball et événements sportifs.",
-    imageUrl: "https://images.unsplash.com/photo-1546519638-68e109498ffc?q=80&w=2090&auto=format&fit=crop"
+    imageUrl: "https://images.unsplash.com/photo-1609513677385-5d2b049d9431?q=80&w=2090&auto=format&fit=crop"
   },
   {
     id: "2",
@@ -34,7 +34,7 @@ const mockFacilities: Facility[] = [
     name: "Courts de Tennis",
     type: "tennis",
     description: "Terrains en terre battue et en dur, accessibles pour tous les niveaux.",
-    imageUrl: "https://images.unsplash.com/photo-1595435934249-5df7ed86e1c1?q=80&w=1974&auto=format&fit=crop"
+    imageUrl: "https://images.unsplash.com/photo-1597893311798-9911ea4af043?q=80&w=1974&auto=format&fit=crop"
   },
   {
     id: "4",

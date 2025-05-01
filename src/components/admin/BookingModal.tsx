@@ -231,7 +231,7 @@ const BookingModal = ({ isOpen, onClose, booking, onSave, onDelete }: BookingMod
                     : "Sélectionnez une date"}
                 </Button>
               </PopoverTrigger>
-              <PopoverContent className="w-auto p-0">
+              <PopoverContent className="w-auto bg-white">
                 <Calendar
                   mode="single"
                   selected={formData.date}

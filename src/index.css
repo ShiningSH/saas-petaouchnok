@@ -24,7 +24,6 @@
     --radius: 0.75rem;
   }
 
-  /* Applique les variables CSS aux classes Tailwind correspondantes */
   body {
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
@@ -49,10 +48,31 @@
     background-color: hsl(var(--muted));
     color: hsl(var(--muted-foreground));
   }
+
+  /* Ciblage des listes déroulantes */
+  select, option {
+    background-color: hsl(var(--background)); /* Fond de la liste déroulante */
+    color: hsl(var(--foreground)); /* Couleur du texte */
+    border: 1px solid hsl(var(--border)); /* Bordure des listes */
+    padding: 0.5rem; /* Un peu de padding pour les options */
+    border-radius: var(--radius); /* Coins arrondis */
+  }
+
+  /* Style lors du focus ou de l'option sélectionnée */
+  select:focus, option:checked {
+    background-color: hsl(var(--primary)); /* Fond de l'option sélectionnée */
+    color: hsl(var(--primary-foreground)); /* Texte de l'option sélectionnée */
+  }
+
+  /* Suppression de l'apparence native des éléments select */
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
 }
 
 @layer components {
-  /* Exemple avec @apply corrigé */
   * {
     @apply border-gray-300; /* Remplacer border-border par une classe existante */
   }
@@ -67,7 +87,6 @@
 }
 
 @layer utilities {
-  /* Définition des classes personnalisées */
   .bg-background {
     background-color: hsl(var(--background));
   }
@@ -114,7 +133,6 @@
   src: url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
 }
 
-/* Animations et transitions */
 .hover-scale {
   @apply transition-transform duration-200 hover:scale-105;
 }
@@ -123,7 +141,6 @@
   @apply shadow-md hover:shadow-lg transition-shadow duration-200;
 }
 
-/* Composants personnalisés */
 .btn-primary {
   @apply bg-petaouchnock-blue-dark hover:bg-petaouchnock-blue text-white font-medium py-2 px-4 rounded-lg transition-colors;
 }

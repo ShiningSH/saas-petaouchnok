@@ -21,7 +21,7 @@ const mockFacilities = [
     type: "gymnase",
     description: "Espace polyvalent pour basketball, volleyball et événements sportifs.",
     location: "1 Rue des Sports",
-    image_url: "",
+    image_url: "https://images.unsplash.com/photo-1609513677385-5d2b049d9431?q=80&w=2090&auto=format&fit=crop",
     city_id: "1",
     created_at: "2023-01-01",
   },

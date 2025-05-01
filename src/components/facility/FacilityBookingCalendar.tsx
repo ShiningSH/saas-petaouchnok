@@ -23,23 +23,20 @@ import { TimeSlot } from "@/types";
 const generateTimeSlots = () => {
   const slots = [];
   const today = new Date();
-  
-  // Générer des créneaux pour les 14 prochains jours
+
   for (let i = 0; i < 14; i++) {
     const currentDate = addDays(today, i);
     const daySlots = [];
-    
-    // Créneaux de 8h à 20h avec des intervalles de 1h
+
     for (let hour = 8; hour < 20; hour++) {
       const startTime = new Date(currentDate);
       startTime.setHours(hour, 0, 0);
-      
+
       const endTime = new Date(currentDate);
       endTime.setHours(hour + 1, 0, 0);
-      
-      // Simuler des créneaux déjà réservés de façon aléatoire
-      const isAvailable = Math.random() > 0.3; // 30% de chance d'être indisponible
-      
+
+      const isAvailable = Math.random() > 0.3;
+
       daySlots.push({
         id: `slot-${i}-${hour}`,
         facility_id: "1",
@@ -48,13 +45,13 @@ const generateTimeSlots = () => {
         is_available: isAvailable,
       });
     }
-    
+
     slots.push({
       date: currentDate,
       slots: daySlots,
     });
   }
-  
+
   return slots;
 };
 
@@ -69,8 +66,6 @@ const FacilityBookingCalendar = ({ facilityId }: FacilityBookingCalendarProps) =
   const [selectedSlot, setSelectedSlot] = useState<string | null>(null);
   const [isConfirmationOpen, setIsConfirmationOpen] = useState(false);
 
-  // Simulation pour récupérer les informations de l'équipement
-  // À remplacer par votre hook ou appel API réel
   const facility = {
     id: facilityId,
     name: "Gymnase Municipal",
@@ -85,7 +80,7 @@ const FacilityBookingCalendar = ({ facilityId }: FacilityBookingCalendarProps) =
   const handleDateSelect = (date: Date | undefined) => {
     if (date) {
       setSelectedDate(date);
-      setSelectedSlot(null); // Réinitialiser le créneau sélectionné
+      setSelectedSlot(null);
     }
   };
 
@@ -101,14 +96,12 @@ const FacilityBookingCalendar = ({ facilityId }: FacilityBookingCalendarProps) =
     setIsConfirmationOpen(false);
   };
 
-  // Filtrer les créneaux pour la date sélectionnée
-  const slotsForSelectedDate = selectedDate 
+  const slotsForSelectedDate = selectedDate
     ? timeSlots.find(
         (day) => format(day.date, "yyyy-MM-dd") === format(selectedDate, "yyyy-MM-dd")
       )?.slots || []
     : [];
 
-  // Trouver le créneau sélectionné
   const selectedTimeSlot = slotsForSelectedDate.find(slot => slot.id === selectedSlot) || null;
 
   return (
@@ -118,11 +111,11 @@ const FacilityBookingCalendar = ({ facilityId }: FacilityBookingCalendarProps) =
           <div className="bg-white border rounded-xl shadow-sm overflow-hidden">
             <div className="p-4 bg-petaouchnock-blue-dark text-white">
               <h3 className="text-lg font-display font-semibold flex items-center">
-                <CalendarIcon className="mr-2" /> 
+                <CalendarIcon className="mr-2" />
                 Sélectionnez une date
               </h3>
             </div>
-            
+
             <div className="p-4">
               <Popover>
                 <PopoverTrigger asChild>
@@ -138,7 +131,7 @@ const FacilityBookingCalendar = ({ facilityId }: FacilityBookingCalendarProps) =
                     )}
                   </Button>
                 </PopoverTrigger>
-                <PopoverContent className="w-auto p-0" align="start">
+                <PopoverContent className="w-auto bg-white" align="start">
                   <Calendar
                     mode="single"
                     selected={selectedDate}
@@ -156,7 +149,6 @@ const FacilityBookingCalendar = ({ facilityId }: FacilityBookingCalendarProps) =
         </div>
       </div>
 
-      {/* Créneaux horaires */}
       <div className="bg-white border rounded-xl shadow-sm overflow-hidden">
         <div className="p-4 bg-petaouchnock-blue-dark text-white">
           <h3 className="text-lg font-display font-semibold flex items-center">
@@ -164,7 +156,7 @@ const FacilityBookingCalendar = ({ facilityId }: FacilityBookingCalendarProps) =
             Créneaux disponibles
           </h3>
         </div>
-        
+
         <div className="p-6">
           {slotsForSelectedDate.length > 0 ? (
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
@@ -175,8 +167,8 @@ const FacilityBookingCalendar = ({ facilityId }: FacilityBookingCalendarProps) =
                     slot.is_available
                       ? selectedSlot === slot.id
                         ? "border-2 border-petaouchnock-green bg-petaouchnock-green text-white shadow-md"
-                        : "border-petaouchnock-green/30 bg-petaouchnock-green/10 hover:bg-petaouchnock-green/20"
-                      : "bg-gray-100 text-gray-500 cursor-not-allowed"
+                        : "border border-petaouchnock-green bg-petaouchnock-green-light hover:bg-petaouchnock-green"
+                      : "bg-gray-200 text-gray-500 cursor-not-allowed"
                   }`}
                   onClick={() => {
                     if (slot.is_available) {
@@ -189,7 +181,7 @@ const FacilityBookingCalendar = ({ facilityId }: FacilityBookingCalendarProps) =
                   </div>
                   <div className="text-xs mt-1 flex items-center justify-center">
                     {slot.is_available ? (
-                      <span className="flex items-center text-green-600">
+                      <span className="flex items-center text-green-800">
                         <CheckCircle className="h-3 w-3 mr-1" />
                         Disponible
                       </span>
@@ -201,14 +193,13 @@ const FacilityBookingCalendar = ({ facilityId }: FacilityBookingCalendarProps) =
               ))}
             </div>
           ) : (
-            <p className="text-gray-500 text-center py-8">
+            <p className="text-gray-600 text-center py-8">
               Aucun créneau disponible pour cette date.
             </p>
           )}
         </div>
       </div>
 
-      {/* Bouton de réservation */}
       <div className="mt-8">
         <Button
           className="w-full bg-petaouchnock-green hover:bg-petaouchnock-green-dark text-white font-medium"
@@ -219,13 +210,12 @@ const FacilityBookingCalendar = ({ facilityId }: FacilityBookingCalendarProps) =
           {selectedSlot ? "Réserver ce créneau" : "Sélectionnez un créneau pour réserver"}
         </Button>
         {!selectedSlot && (
-          <p className="text-sm text-gray-500 text-center mt-2">
+          <p className="text-sm text-gray-600 text-center mt-2">
             Veuillez sélectionner un créneau disponible pour continuer.
           </p>
         )}
       </div>
 
-      {/* Modale de confirmation de réservation */}
       <BookingConfirmationDialog
         isOpen={isConfirmationOpen}
         onClose={handleCloseConfirmation}
